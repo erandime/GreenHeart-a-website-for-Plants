@@ -1,0 +1,13 @@
+.result{
+    background-color: whitesmoke;
+}
+
+.main{
+    background: rgba(183, 248, 178, 0.5);
+}
+
+body {
+    background-image: url("backgroungImg.webp");
+    background-attachment: fixed;
+};
+
