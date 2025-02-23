@@ -1,6 +1,9 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -8,15 +11,12 @@ const port = 3000;
 const API_URL = "https://permapeople.org/api";
 const appType = "application/json";
 
-// Get access to the https://permapeople.org/knowledgebase/api-docs.html#getting-access.
-// Enter your APi keys below.
-const yourKey = "";
-const yourSecretKey = "";
+app.locals.year = new Date().getFullYear();
 
 const config = {
     headers: {
-        "x-permapeople-key-id": yourKey, 
-        "x-permapeople-key-secret": yourSecretKey, 
+        "x-permapeople-key-id": process.env.PERMAPEOPLE_KEY, 
+        "x-permapeople-key-secret": process.env.PERMAPEOPLE_SECRET, 
         "Content-Type": appType
     },
 };
@@ -35,9 +35,31 @@ app.post("/result", async (req, res) => {
         const result = await axios.post(API_URL + "/search", 
             {q: query},
             config);
-        res.render("index.ejs", {content: result.data.plants[0].name});
+        const plants = result.data.plants;
+        
+        if (!plants || plants.length === 0) {
+            return res.render("index.ejs", { error: "Plant not found. Try another name!" });
+        }
+
+        const plant = {
+            name: plants[0].name,
+            scientificName: plants[0].scientific_name,
+            image: plants[0].images.thumb,      
+            water: getValueForKey(plants[0].data, 'Water requirement'),
+            light: getValueForKey(plants[0].data, 'Light requirement'),
+            soil: getValueForKey(plants[0].data, 'Soil type'),
+        };
+
+
+        function getValueForKey(data, key) {
+        const info = data.find(item => item.key === key);
+        return info ? info.value : 'Not available';  
+        }
+
+        res.render("index.ejs", { content: plant });
+        
     } catch (error) {
-        res.render("index.ejs", {content: JSON.stringify(error.response.data)});
+        res.render("index.ejs", {error: JSON.stringify(error.response.data)});
     }
 });
 
