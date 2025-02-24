@@ -19,10 +19,33 @@ Preview of the UI for the application:<br/>
 ![SearchResult](/public/SearchResult.png)
 
 ### Installation
+#### Prerequisites
+Ensure you have Node.js and npm installed.
+Users must obtain their own API keys from [Permapeople](https://permapeople.org/knowledgebase/api-docs.html#getting-access) to use this project.
 
+#### Steps
 1) Clone this repository.
+```sh
+git clone https://github.com/your-username/greenheart.git
+cd greenheart
+```
 2) Install dependencies.
-
+```sh
+npm install
+```
+3) Create a .env file and add your API keys in the index.js:
+```sh
+PERMAPEOPLE_KEY=your-key-here
+PERMAPEOPLE_SECRET=your-secret-here
+```
+4) Start the server:
+```sh
+node index.js
+```
+5) Open your browser and visit:
+```sh
+http://localhost:3000
+```
 
 ### License
 This project is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).  
