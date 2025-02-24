@@ -4,14 +4,12 @@ GreenHeart is a plant information website that allows users to search for plant 
 
 ### Features
 
-🌱 Search for plants by name
-📸 View image of plants
-💧 Get care tips (water, light, soil requirements)
+🌱 Search for plants by name, 📸 View image of plants, 💧 Get care tips (water, light, soil requirements)
 
-🛠️ Technologies Used
+### Technologies Used
 
-Backend: Node.js, Express.js
-Frontend: EJS, Bootstrap
+Backend: Node.js, Express.js,
+Frontend: EJS, Bootstrap.
 API: Permapeople API
 
 ### UI Design
@@ -20,6 +18,10 @@ Preview of the UI for the application:<br/>
 ![WelcomePage](/public/WelcomePage.png)
 ![SearchResult](/public/SearchResult.png)
 
+### Installation
+
+1) Clone this repository.
+2) Install dependencies.
 
 
 ### License
