@@ -15,8 +15,8 @@ app.locals.year = new Date().getFullYear();
 
 const config = {
     headers: {
-        "x-permapeople-key-id": process.env.PERMAPEOPLE_KEY, //Add your key here.
-        "x-permapeople-key-secret": process.env.PERMAPEOPLE_SECRET, //Add your key here.
+        "x-permapeople-key-id": process.env.PERMAPEOPLE_KEY, 
+        "x-permapeople-key-secret": process.env.PERMAPEOPLE_SECRET, 
         "Content-Type": appType
     },
 };
