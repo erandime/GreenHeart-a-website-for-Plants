@@ -20,28 +20,35 @@
             air-purifying greens, culinary herbs, or lucky plants, enter a name to see its image, details, and
             care guide. Your go-to source for all things green!</p>
     <form action="/result" method="post" class="input-group mx-auto w-50">
-        <input type="text" class="form-control" placeholder="Search" name="query" required>
+        <input type="text" class="form-control" placeholder="Search" name="query" autocomplete="off" required>
         <button class="btn btn-success" type="submit">Go</button>
         </form>
     </div>
-    <div>
-    <% if (locals.content) { %>
-        <div class="container-fluid mx-auto mt-2 py-3 px-5 text-center w-50 result">
-            <img src=<%=content.image %> alt=<%= content.name %>/>
-                <ul style="list-style-type: none;">
-                    <li>Name of Plant: <%= content.name %></li>
-                    <li>Scientific Name: <%= content.scientificName %></li>
-                    <li>Water Requirement: <%= content.water %></li>
-                    <li>Light Requirement: <%= content.light %></li>
-                    <li>Soil Type: <%= content.soil %></li>
+    <div> 
 
-                </ul>
-    <% }else if (locals.error) { %>
-        <div class="container-fluid mx-auto mt-2 py-3 px-5 text-center w-75 result">
-            <p><%= error %></p>
+    <% if (locals.content) { %>
+    <div class="container-fluid mx-auto mt-2 py-3 px-5 text-center w-50 result">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static text-start">
+            <strong class="d-inline-block mb-2 text-primary-emphasis">Search Result:</strong>
+            <p class="card-text mb-auto"><strong>Name of Plant: </strong><%= content.name %></p>
+            <p class="card-text mb-auto"><strong>Scientific Name: </strong><em><%= content.scientificName %></em></p>
+            <p class="card-text mb-auto"><strong>Water Requirement: </strong><%= content.water %></p>
+            <p class="card-text mb-auto"><strong>Light Requirement: </strong><%= content.light %></p>
+            <p class="card-text mb-auto"><strong>Soil Type: </strong><%= content.soil %></p>
+            <p class="card-text mb-auto"><strong>Description: </strong><%= content.description %></p>
         </div>
+        <div class="col-auto d-none d-lg-block">
+            <img src=<%=content.image %> alt=<%= content.name %> width="200" height="250" class="img-fluid">
+        </div>
+    </div>
+    <% }else if (locals.error) { %>
+    <div class="container-fluid mx-auto mt-2 py-3 px-5 text-center w-75 result">
+        <p><%= error %></p>
+    </div>
     <% } %>
     </div>
+
     <footer class="fixed-bottom">
         <span class="text-dark bg-light fixed-bottom">© <%= year %>, 
             Data sourced from <a href="https://permapeople.org" target="_blank" rel="noopener noreferrer">Permapeople</a>. 

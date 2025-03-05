@@ -48,6 +48,7 @@ app.post("/result", async (req, res) => {
             water: getValueForKey(plants[0].data, 'Water requirement'),
             light: getValueForKey(plants[0].data, 'Light requirement'),
             soil: getValueForKey(plants[0].data, 'Soil type'),
+            description: plants[0].description,
         };
 
 
