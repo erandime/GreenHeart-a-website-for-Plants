@@ -15,7 +15,9 @@ API: Permapeople API
 ### UI Design
 Preview of the UI for the application:<br/>
 
+#### Welcome Page
 ![WelcomePage](/public/WelcomePage.png)
+#### Example of a Search Result
 ![SearchResult](/public/SearchResult.png)
 
 ### Installation
